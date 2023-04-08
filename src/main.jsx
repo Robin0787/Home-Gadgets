@@ -2,18 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App'
+import { getSelectedProducts } from './Custom Loaders/Loaders'
 import About from './components/About'
 import Cart from './components/Cart'
 import Home from './components/Home'
 import Shop from './components/Shop'
-import { getStoredData } from './components/Utilities/Utility'
 import './index.css'
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
-        loader: () => getStoredData(),
+        loader: getSelectedProducts, 
         children: [
             {
                 path: '/',
@@ -22,12 +22,11 @@ const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop />,
-                loader: () => fetch('products.json')
             },
             {
                 path: '/cart',
                 element: <Cart />,
-                loader: () => fetch('products.json')
+                loader: () => getSelectedProducts()
             },
             {
                 path: '/about',

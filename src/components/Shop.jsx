@@ -1,11 +1,13 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { cartContainer, productContainer } from '../App';
 import SingleProduct from './Cards/SingleProduct';
 import { addToStorage } from "./Utilities/Utility";
 const Shop = () => {
-    const allProducts  = useLoaderData();
-
+    const allProducts = useContext(productContainer);
+    const [cartItems, setCartItems] = useContext(cartContainer);
     const addToCart = (id) => {
+        const fountItem = allProducts.find(item => item.id === id);
+        setCartItems((prev => [...prev, fountItem]));
         addToStorage(id);
     }
 

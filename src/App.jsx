@@ -1,19 +1,27 @@
+import { createContext, useState } from "react";
 import { Outlet, useLoaderData, useNavigation } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Loading from "./components/Loading";
 
+export const productContainer = createContext([]);
+export const cartContainer = createContext([]);
+
 const App = () => {
   const navigation = useNavigation();
-  const items = useLoaderData();
+  const {cartProducts, allItems} = useLoaderData();
+  const [cartItems, setCartProducts] = useState(cartProducts);
+
   return (
-    <div>
-       <Header items={items}/>
+    <productContainer.Provider value={allItems}>
+       <cartContainer.Provider value={[cartItems,setCartProducts]}>
+       <Header />
        {
         navigation.state === 'loading' ? <Loading /> : <Outlet />
        }
        <Footer />
-    </div>
+       </cartContainer.Provider>
+    </productContainer.Provider>
   )
 }
 

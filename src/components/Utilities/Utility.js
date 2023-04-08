@@ -24,4 +24,15 @@ const getStoredData = () => {
     return orderedItems;
 }
 
-export { addToStorage, getStoredData };
+const removeFromStorage = (id) => {
+    const allData = getStoredData();
+    if(id in allData){
+        delete allData[id]
+        localStorage.setItem('cartItem', JSON.stringify(allData));
+    }
+    return allData;
+}
+
+
+export { addToStorage, getStoredData, removeFromStorage };
+
