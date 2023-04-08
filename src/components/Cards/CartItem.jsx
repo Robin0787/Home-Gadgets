@@ -30,7 +30,7 @@ const CartItem = ({ product,deleteItem }) => {
             <button
               onClick={() => {deleteItem(id)}}
               type='button'
-              className='flex items-center px-2 py-1 pl-0 space-x-1'
+              className='flex items-center space-x-1 text-blue-400 bg-cyan-100 rounded-full p-3 '
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -43,7 +43,6 @@ const CartItem = ({ product,deleteItem }) => {
                 <rect width='32' height='200' x='312' y='216'></rect>
                 <path d='M328,88V40c0-13.458-9.488-24-21.6-24H205.6C193.488,16,184,26.542,184,40V88H64v32H448V88ZM216,48h80V88H216Z'></path>
               </svg>
-              <span>Remove</span>
             </button>
           </div>
         </div>
