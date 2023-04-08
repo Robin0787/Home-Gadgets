@@ -1,5 +1,6 @@
 
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { cartContainer } from '../App';
 import CartItem from './Cards/CartItem';
@@ -8,19 +9,31 @@ const Cart = () => {
     const [cartItems, setCartItems] = useContext(cartContainer);
 
     let total = 0;
+    // calculating the total price of the elements of the cart.
     if(cartItems.length > 0) {
         total = cartItems.reduce((prev,curr) => prev + (curr.price)* curr.quantity,0);
     }
-
-    function clearCart () {
+    function clearCart() {
         localStorage.removeItem('cartItem');
         setCartItems([]);
+        toast.success('Cart Cleared! 👍');
     }
     function deleteItem(id) {
         const remainingItems = cartItems.filter(item => item.id !== id);
         setCartItems(remainingItems);
         removeFromStorage(id);
+        toast.success('Item deleted! 👍');
     }
+    function proceedOrder() {
+        if(cartItems.length > 0) {
+            setCartItems([]);
+            localStorage.removeItem('cartItem');
+            return toast.success('Order Placed! 👍');
+        }else {
+            toast.error('Cart is empty! 🔥');
+        }
+    }
+
     return (
         <div className='flex flex-col items-center justify-center gap-3 min-h-[calc(100vh-157px)]'>
             <div className='flex flex-col max-w-3xl p-6 space-y-4 sm:p-10'>
@@ -40,7 +53,7 @@ const Cart = () => {
                 {
                     cartItems.length>0 ? <button onClick={clearCart} type='button' className='px-4 py-2 border rounded-full border-gray-500 duration-300 hover:bg-gray-300'>Clear Cart</button> : <Link to='/shop' className='px-4 py-2 border rounded-full border-gray-500 duration-300 hover:bg-gray-300'>Back to Shop</Link>
                 }
-                <button type='button' className='px-4 py-2 rounded-full duration-300 bg-cyan-300 hover:bg-cyan-400'>Proceed Order</button>
+                <button type='button' onClick={proceedOrder} className='px-4 py-2 rounded-full duration-300 bg-cyan-300 hover:bg-cyan-400'>Proceed Order</button>
                 </div>
             </div>
         </div>

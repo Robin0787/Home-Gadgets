@@ -2,7 +2,7 @@ import { ShoppingCartIcon } from '@heroicons/react/24/solid';
 import React from 'react';
 
 const SingleProduct = ({ product, addToCart }) => {
-  const { name, picture, price, category,id } = product
+  const { name, picture, price, category } = product;
   return (
     <div className='bg-gray-100 rounded shadow-lg relative'>
       <img
@@ -15,7 +15,7 @@ const SingleProduct = ({ product, addToCart }) => {
       <p className='text-xs'>{category}</p>
       <div className='flex justify-between items-center mt-auto'>
       <p className='font-bold text-sm'>Price: {price}$</p>
-      <ShoppingCartIcon className='h-6 w-6 text-cyan-400 cursor-pointer mr-2' onClick={() => addToCart(id)} />
+      <ShoppingCartIcon className='h-6 w-6 text-cyan-400 cursor-pointer mr-2' onClick={() => addToCart(product)} />
       </div>
       </div>
     </div>

@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { Toaster } from 'react-hot-toast'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App'
 import { getSelectedProducts } from './Custom Loaders/Loaders'
 import About from './components/About'
 import Cart from './components/Cart'
+import ErrorPage from './components/ErrorPage'
 import Home from './components/Home'
 import Shop from './components/Shop'
 import './index.css'
@@ -33,8 +35,15 @@ const router = createBrowserRouter([
                 element: <About />
             }
         ]
+    },
+    {
+        path: '*',
+        element: <ErrorPage />
     }
 ])
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(<RouterProvider router={router}/>)
+ReactDOM.createRoot(document.getElementById('root')).render(<>
+    <Toaster />
+    <RouterProvider router={router}/>
+</>)

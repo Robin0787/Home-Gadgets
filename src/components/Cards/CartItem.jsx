@@ -28,7 +28,7 @@ const CartItem = ({ product,deleteItem }) => {
           </div>
           <div className='flex text-sm divide-x'>
             <button
-              onClick={() => {deleteItem(id);alert('Item Removed');}}
+              onClick={() => {deleteItem(id)}}
               type='button'
               className='flex items-center px-2 py-1 pl-0 space-x-1'
             >
