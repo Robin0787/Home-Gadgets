@@ -2,7 +2,7 @@ import { ShoppingCartIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({items}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
@@ -50,8 +50,11 @@ const Header = () => {
           </li>
           <li>
             <Link to='/cart' aria-label='Cart' title='Cart'>
-              <div className='relative py-3'>
+              <div className='relative p-3 bg-blue-50 rounded-full'>
                 <ShoppingCartIcon className='h-6 w-6 text-cyan-400' />
+                {
+                  Object.keys(items).length !== 0 && <p className='text-xs text-blue-400 font-bold absolute top-0 right-3'>{Object.keys(items).length}</p>
+                }
               </div>
             </Link>
           </li>
