@@ -1,6 +1,6 @@
+import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

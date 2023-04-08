@@ -1,5 +1,11 @@
+import Home from "./components/Home";
+
 const App = () => {
-  return <h1>Welcome to HeroGadget</h1>
+  return (
+    <div>
+       <Home />
+    </div>
+  )
 }
 
-export default App
+export default App;
