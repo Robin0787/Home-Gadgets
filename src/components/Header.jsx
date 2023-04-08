@@ -1,9 +1,9 @@
-import { ShoppingCartIcon } from '@heroicons/react/24/solid'
-import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { ShoppingCartIcon } from '@heroicons/react/24/solid';
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
       <div className='relative flex items-center justify-between'>
@@ -98,6 +98,7 @@ const Header = () => {
                       aria-label='HeroGadget'
                       title='HeroGadget'
                       className='inline-flex items-center'
+                      onClick={() => setIsMenuOpen(false)}
                     >
                       <div className='flex items-center justify-center w-8 h-8 rounded-full bg-cyan-200'>
                         <svg
@@ -138,6 +139,7 @@ const Header = () => {
                         aria-label='Shop'
                         title='Shop'
                         className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                        onClick={() => setIsMenuOpen(false)}
                       >
                         Shop
                       </Link>
@@ -160,6 +162,7 @@ const Header = () => {
                         aria-label='About Us'
                         title='About Us'
                         className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                        onClick={() => setIsMenuOpen(false)}
                       >
                         About Us
                       </Link>
